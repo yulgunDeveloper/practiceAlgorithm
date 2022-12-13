@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.upbit'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '15'
 
 configurations {
     compileOnly {
@@ -26,13 +26,25 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'com.auth0:java-jwt:3.16.0'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'javax.servlet:jstl:1.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.2.0'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.google.code.gson:gson:2.9.1'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+bootWar {
+    enabled = true
+    destinationDirectory = file(System.getenv("UPBIT_PROJECT")+"/libs")
+}
+war {
+    enabled = true
+    destinationDirectory = file(System.getenv("UPBIT_PROJECT")+"/libs")
 }

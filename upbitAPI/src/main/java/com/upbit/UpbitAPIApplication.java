@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UpbitAutoApplication {
+public class UpbitAPIApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UpbitAutoApplication.class, args);
+        SpringApplication.run(UpbitAPIApplication.class, args);
     }
 
 }
