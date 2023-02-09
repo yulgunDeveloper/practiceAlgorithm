@@ -7,10 +7,10 @@ public class Main {
 
         int i = a.length() - 1;
         int j = b.length() - 1;
-        int carry = 0;
+        int result = 0;
         StringBuilder sb = new StringBuilder();
         while (i >= 0 || j >= 0) {
-            int sum = carry;
+            int sum = result;
             if (i >= 0) {
                 sum += a.charAt(i) - '0';
                 i--;
@@ -20,10 +20,10 @@ public class Main {
                 j--;
             }
             sb.append(sum % 2);
-            carry = sum / 2;
+            result = sum / 2;
         }
-        if (carry > 0) {
-            sb.append(carry);
+        if (result > 0) {
+            sb.append(result);
         }
         System.out.println(sb.reverse());
     }
