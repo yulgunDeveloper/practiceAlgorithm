@@ -15,6 +15,7 @@ public class Main {
                 last1++;
             } else if (last2 < cards2.length && goal[i].equals(cards2[last2])) {
                 last2++;
+                
             } else {
                 System.out.println("No");
             }
