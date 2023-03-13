@@ -6,6 +6,5 @@ public class Main {
         String skip = "wbqd";
         int index = 5;
 
-
     }
 }
