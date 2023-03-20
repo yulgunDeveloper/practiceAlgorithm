@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String s ="aukks";
+        String s ="eeefgaukks";
         String skip = "wbqd";
         int index = 5;
 
@@ -15,27 +15,36 @@ public class Main {
 
         for (int i = 0; i < skip.length(); i++) {
             char ch = skip.charAt(i);
-            skipList.add(ch);
+            if (!skipList.contains(ch)) {
+                skipList.add(ch);
+            }
         }
 
         for (int i = 0; i < s.length(); i++) {
             result = new ArrayList<>();
             char one = s.charAt(i);
             for (int j = 0; j < index; j++) {
-                one++;
-                if (one >= 123) one -= 26;
+                one = isNotSkip(one);
                 if (!skipList.contains(one)) {
                     result.add(one);
                 }
             }
             char last = result.get(result.size() - 1);
-            if (result.size() < index) {
-                int cnt = index - result.size();
+            int cnt = index - result.size();
+            if (cnt > 0) {
                 last += cnt;
                 if (last >= 123) last -= 26;
+            }
+            while (skipList.contains(last)) {
+                last = isNotSkip(last);
             }
             answer += String.valueOf(last);
         }
         System.out.println(answer);
+    }
+    public static char isNotSkip(char ch) {
+        ch++;
+        if (ch >= 123) ch -= 26;
+        return ch;
     }
 }
