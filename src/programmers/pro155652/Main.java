@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String s ="aukks";
-        String skip = "wbqd";
-        int index = 5;
+        String s ="zzzzzz";
+        String skip = "fghijklmnopqrstuvwxy";
+        int index = 7;
 
         String answer = "";
         List<Character> skipList = new ArrayList<>();
@@ -20,6 +20,7 @@ public class Main {
 
         for (int i = 0; i < s.length(); i++) {
             isSkip = 0;
+            tf = true;
             char compareCh = s.charAt(i);
             for (int j = 0; j < index; j++) {
                 compareCh = isNotSkip(compareCh);
