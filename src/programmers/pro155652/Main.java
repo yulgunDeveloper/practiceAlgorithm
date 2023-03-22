@@ -4,48 +4,64 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String s ="zzzzzz";
+        String s = "zzzzzz";
         String skip = "fghijklmnopqrstuvwxy";
         int index = 7;
+//        String s = "aukks";
+//        String skip = "wbqd";
+//        int index = 5;
 
         String answer = "";
-        List<Character> skipList = new ArrayList<>();
-        int isSkip = 0;
+        char ch = 'a';
+        int intSkip = 0;
         boolean tf = true;
-
+        List<String> alpaList = new ArrayList<>();
+        List<Integer> skipList = new ArrayList<>();
         for (int i = 0; i < skip.length(); i++) {
-            char skipCh = skip.charAt(i);
-            skipList.add(skipCh);
+            char compare = skip.charAt(i);
+            int where = compare - 97;
+            skipList.add(where);
         }
 
+        for (int i = 0; i < 26; i++) {
+            alpaList.add(String.valueOf(ch));
+            ch++;
+        }
         for (int i = 0; i < s.length(); i++) {
-            isSkip = 0;
+            intSkip = 0;
             tf = true;
-            char compareCh = s.charAt(i);
+            char compare = s.charAt(i);
+            int where = compare - 97;
+
             for (int j = 0; j < index; j++) {
-                compareCh = isNotSkip(compareCh);
-                if (skipList.contains(compareCh)){
-                    isSkip++;
+                where++;
+                if (where >= 26) {
+                    where /= 26;
+                    where--;
+                }
+                if (skipList.contains(where)) {
+                    intSkip++;
                 }
             }
-            compareCh += isSkip;
-            if (compareCh >= 123) compareCh -= 26;
-            if (skipList.contains(compareCh)) {
-                while (tf) {
-                    compareCh = isNotSkip(compareCh);
-                    if (!skipList.contains(compareCh)) {
-                        tf = false;
+
+            where += intSkip;
+            if (where >= 26) {
+                where /= 26;
+                where--;
+            }
+            while (tf) {
+                if (skipList.contains(where)) {
+                    where++;
+                    if (where >= 26) {
+                        where /= 26;
+                        where--;
                     }
+                } else {
+                    tf = false;
                 }
             }
-            answer += String.valueOf(compareCh);
+            answer += alpaList.get(where);
         }
         System.out.println(answer);
-    }
-
-    public static char isNotSkip(char ch) {
-        ch++;
-        if (ch >= 123) ch -= 26;
-        return ch;
     }
 }
