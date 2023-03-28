@@ -8,11 +8,50 @@ public class Main {
         String[][] book_time = {{"10:20", "12:30"},{"10:20", "12:30"},{"10:20", "12:30"}};
 
         int answer = 0;
-        List<String> timeList = new ArrayList<>();
+        TreeMap<String, List<String>> timeMap = new TreeMap<>();
         int prevH = 0;
         int prevM = 0;
         int nowH = 0;
         int nowM = 0;
+        for (int i = 0; i < book_time.length; i++) {
+            List<String> list = new ArrayList<>();
+            // 시작시간이 같은 경우
+            if (timeMap.containsKey(book_time[i][0])) {
+                list = timeMap.get(book_time[i][0]);
+                list.add(book_time[i][1]);
+                timeMap.put(book_time[i][0], list);
+                continue;
+            } else {
+                list.add(book_time[i][1]);
+                timeMap.put(book_time[i][0], list);
+            }
+        }
+
+        String prevTime = "";
+        for (String key : timeMap.keySet()) {
+            List<String> list = timeMap.get(key);
+            for (int i = 0; i < list.size(); i++) {
+                if (prevTime.equals("")) {
+                    prevTime = list.get(i);
+                } else {
+                    prevH = Integer.parseInt(changeTimeToH(prevTime));
+                    prevM = Integer.parseInt(changeTimeToM(prevTime));
+                    nowH = Integer.parseInt(changeTimeToH(key));
+                    nowM = Integer.parseInt(changeTimeToM(key));
+                    if (prevH == nowH) {
+                        if (prevM > nowM) {
+                            answer++;
+                        } else if (prevM < nowM) {
+                            answer++;
+                        }
+                    } else {
+                        answer++;
+                    }
+                    prevTime = list.get(i);
+                }
+            }
+        }
+        System.out.println(answer);
     }
 
     public static String changeTimeToH(String time) {
