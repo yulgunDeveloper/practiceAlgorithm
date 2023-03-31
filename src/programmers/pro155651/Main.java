@@ -15,6 +15,8 @@ public class Main {
         int nowM = 0;
         for (int i = 0; i < book_time.length; i++) {
             List<String> list = new ArrayList<>();
+
+            list.add("aaa");
             // 시작시간이 같은 경우
             if (timeMap.containsKey(book_time[i][0])) {
                 list = timeMap.get(book_time[i][0]);
