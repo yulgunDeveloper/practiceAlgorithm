@@ -13,19 +13,6 @@ public class Main {
         int prevM = 0;
         int nowH = 0;
         int nowM = 0;
-        for (int i = 0; i < book_time.length; i++) {
-            List<String> list = new ArrayList<>();
-            // 시작시간이 같은 경우
-            if (timeMap.containsKey(book_time[i][0])) {
-                list = timeMap.get(book_time[i][0]);
-                list.add(book_time[i][1]);
-                timeMap.put(book_time[i][0], list);
-                continue;
-            } else {
-                list.add(book_time[i][1]);
-                timeMap.put(book_time[i][0], list);
-            }
-        }
 
         String prevTime = "";
         for (String key : timeMap.keySet()) {
