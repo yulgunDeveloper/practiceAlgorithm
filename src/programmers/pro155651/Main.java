@@ -31,24 +31,6 @@ public class Main {
         for (String key : timeMap.keySet()) {
             List<String> list = timeMap.get(key);
             for (int i = 0; i < list.size(); i++) {
-                if (prevTime.equals("")) {
-                    prevTime = list.get(i);
-                } else {
-                    prevH = Integer.parseInt(changeTimeToH(prevTime));
-                    prevM = Integer.parseInt(changeTimeToM(prevTime));
-                    nowH = Integer.parseInt(changeTimeToH(key));
-                    nowM = Integer.parseInt(changeTimeToM(key));
-                    if (prevH == nowH) {
-                        if (prevM > nowM) {
-                            answer++;
-                        } else if (prevM < nowM) {
-                            answer++;
-                        }
-                    } else {
-                        answer++;
-                    }
-                    prevTime = list.get(i);
-                }
             }
         }
         System.out.println(answer);
