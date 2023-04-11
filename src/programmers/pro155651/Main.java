@@ -27,12 +27,6 @@ public class Main {
             }
         }
 
-        String prevTime = "";
-        for (String key : timeMap.keySet()) {
-            List<String> list = timeMap.get(key);
-            for (int i = 0; i < list.size(); i++) {
-            }
-        }
         System.out.println(answer);
     }
 
