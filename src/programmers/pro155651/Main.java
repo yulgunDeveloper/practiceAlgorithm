@@ -38,15 +38,6 @@ public class Main {
                     prevM = Integer.parseInt(changeTimeToM(prevTime));
                     nowH = Integer.parseInt(changeTimeToH(key));
                     nowM = Integer.parseInt(changeTimeToM(key));
-                    if (prevH == nowH) {
-                        if (prevM > nowM) {
-                            answer++;
-                        } else if (prevM < nowM) {
-                            answer++;
-                        }
-                    } else {
-                        answer++;
-                    }
                     prevTime = list.get(i);
                 }
             }
