@@ -42,7 +42,6 @@ public class Main {
                 }
             }
         }
-        System.out.println(answer);
     }
 
     public static String changeTimeToH(String time) {
