@@ -33,12 +33,6 @@ public class Main {
             for (int i = 0; i < list.size(); i++) {
                 if (prevTime.equals("")) {
                     prevTime = list.get(i);
-                } else {
-                    prevH = Integer.parseInt(changeTimeToH(prevTime));
-                    prevM = Integer.parseInt(changeTimeToM(prevTime));
-                    nowH = Integer.parseInt(changeTimeToH(key));
-                    nowM = Integer.parseInt(changeTimeToM(key));
-                    prevTime = list.get(i);
                 }
             }
         }
