@@ -24,6 +24,12 @@ public class Main {
                     answer[i] = "X";
                 }
             }
+
+            if (a + b == c) {
+                System.out.println(a);
+            } else if (c - a == b){
+
+            }
         }
     }
 }
