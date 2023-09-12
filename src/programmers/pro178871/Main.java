@@ -14,19 +14,24 @@ public class Main {
     }
 
     public static String[] solution(String[] players, String[] callings) {
-        String[] answer = {};
+        String[] answer = new String[players.length];
+        Map<String, Integer> numI = new HashMap<>();
+        Map<Integer, String> nameMap = new HashMap<>();
+        for (int i = 0; i < players.length; i++) {
+            numI.put(players[i], i);
+            nameMap.put(i, players[i]);
+        }
 
         for (int i = 0; i < callings.length; i++) {
-            for (int j = 0; j < players.length; j++) {
-                if (players[j].equals(callings[i])) {
-                    String prev = players[j - 1];
-                    players[j - 1] = callings[i];
-                    players[j] = prev;
-                    break;
-                }
-            }
+            numI.put(callings[i], numI.get(callings[i]) - 1);
+            String prevName = nameMap.get(numI.get(callings[i]));
+            nameMap.put(numI.get(callings[i]), callings[i]);
+            nameMap.put(numI.get(callings[i]) + 1, prevName);
+            numI.put(prevName, numI.get(callings[i]) + 1);
         }
-        answer = players;
+        for (int i = 0; i < players.length; i++) {
+            answer[i] = nameMap.get(i);
+        }
         return answer;
     }
 }
