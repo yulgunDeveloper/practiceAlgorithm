@@ -22,16 +22,18 @@ public class Main {
             nameMap.put(i, players[i]);
         }
 
-        for (int i = 0; i < callings.length; i++) {
-            numI.put(callings[i], numI.get(callings[i]) - 1);
-            String prevName = nameMap.get(numI.get(callings[i]));
-            nameMap.put(numI.get(callings[i]), callings[i]);
-            nameMap.put(numI.get(callings[i]) + 1, prevName);
-            numI.put(prevName, numI.get(callings[i]) + 1);
+        for (String calling : callings) {
+            numI.put(calling, numI.get(calling) - 1);
+            String prevName = nameMap.get(numI.get(calling));
+            nameMap.put(numI.get(calling), calling);
+            nameMap.put(numI.get(calling) + 1, prevName);
+            numI.put(prevName, numI.get(calling) + 1);
         }
+
         for (int i = 0; i < players.length; i++) {
             answer[i] = nameMap.get(i);
         }
+
         return answer;
     }
 }
