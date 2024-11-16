@@ -25,6 +25,6 @@ public class pro70129 {
     }
     public static void main(String[] args) {
         int[] score = {0, 300, 40, 300, 20, 70, 150, 50, 500, 1000};
-        score = solution("1111111");
+        solution("1111111");
     }
 }
